@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "uZTz3hHonmY=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\beatriz.querubim\\dev\\taskhub-api-jwt\\TaskHub.Api\\TaskHub.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\beatriz.querubim\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.8\\microsoft.aspnetcore.openapi.9.0.8.nupkg.sha512",
+    "C:\\Users\\beatriz.querubim\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

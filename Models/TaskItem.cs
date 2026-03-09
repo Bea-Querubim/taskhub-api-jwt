@@ -4,29 +4,20 @@ namespace TaskHub.Api.Models
     {
         public int Id { get; set; }
 
-        public string Title { get; set; }
+        public required string Title { get; set; }
 
         public string? Description { get; set; }
 
-        public TaskStatus IsCompleted { get; set; } = TaskStatus.Created;
+        public TaskStatus Status { get; set; } = TaskStatus.Created;
 
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        public DateTime UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
         public DateTime? FinalDate { get; set; }
 
         // Foreign Key - User
         public int UserId { get; set; }
-        public User User { get; set; }
-    }
-
-    public enum TaskStatus
-    {
-        Created,
-        InProgress,
-        Paused,
-        Cancelled,
-        Done
+        public User User { get; set; } = null!;
     }
 }

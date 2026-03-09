@@ -25,5 +25,47 @@ namespace TaskHub.Api.Data
         //Define Entities after init constructor DbContext
         public DbSet<TaskItem> TaskItems { get; set; }
         public DbSet<User> Users { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.Property(u => u.Username)
+                    .IsRequired()
+                    .HasMaxLength(50);
+                entity.HasIndex(u => u.Username).IsUnique();
+
+                entity.Property(u => u.PasswordHash)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(u => u.Email)
+                    .IsRequired()
+                    .HasMaxLength(100);
+                entity.HasIndex(u => u.Email).IsUnique();
+
+            });
+
+            modelBuilder.Entity<TaskItem>(
+
+                entity =>
+                {
+                    entity.Property(t => t.Title)
+                        .IsRequired()
+                        .HasMaxLength(100);
+    
+                    entity.Property(t => t.Description)
+                        .HasMaxLength(500);
+    
+                    entity.HasOne(t => t.User)
+                        .WithMany(u => u.Tasks)
+                        .HasForeignKey(t => t.UserId)
+                        .OnDelete(DeleteBehavior.Cascade);
+                }
+            );
+
+            base.OnModelCreating(modelBuilder);
+
+        }
     }
 }

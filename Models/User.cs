@@ -4,16 +4,16 @@ namespace TaskHub.Api.Models
     {
         public int Id { get; set; }
 
-        public string Username { get; set; }
+        public required string Username { get; set; }
 
-        public string Password { get; set; }
+        public required string PasswordHash { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
-        public string Email { get; set; }
+        public required string Email { get; set; }
 
-        public ICollection<TaskItem> Tasks { get; set; }  // 1:N relationship with TaskItem
+        public ICollection<TaskItem> Tasks { get; set; } = new List<TaskItem>();// 1:N relationship with TaskItem
     }
 }
